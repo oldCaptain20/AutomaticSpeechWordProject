@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.automaticspeechwordproject.mapper.WordMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.automaticspeechwordproject.entity.Word">
+            <result property="englishWord" column="english_word" jdbcType="VARCHAR"/>
+            <result property="alias" column="alias" jdbcType="VARCHAR"/>
+            <result property="meaning" column="meaning" jdbcType="VARCHAR"/>
+            <result property="source" column="source" jdbcType="VARCHAR"/>
+            <result property="insertTime" column="insert_time" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        english_word,alias,meaning,
+        source,insert_time
+    </sql>
+</mapper>
