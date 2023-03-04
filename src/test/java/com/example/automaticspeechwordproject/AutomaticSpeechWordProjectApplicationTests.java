@@ -1,5 +1,7 @@
 package com.example.automaticspeechwordproject;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.automaticspeechwordproject.entity.Word;
 import com.example.automaticspeechwordproject.service.WordService;
 import com.example.automaticspeechwordproject.speech.Voice;
 import org.junit.jupiter.api.Test;
@@ -36,6 +38,16 @@ class AutomaticSpeechWordProjectApplicationTests {
     void contextLoads100() {
          voice.master(1,100);
         }
+
+
+
+    @Test
+    // 复习前15个单词
+    void contextLoads15(){
+            while(true){
+                voice.master(1,15);
+            }
+    }
 
 
 

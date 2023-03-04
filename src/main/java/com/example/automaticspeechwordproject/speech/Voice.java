@@ -43,7 +43,7 @@ public class Voice {
                 // 音量 0-100
                 sap.setProperty("Volume", new Variant(100));
                 // 语音朗读速度 -10 到 +10
-                sap.setProperty("Rate", new Variant(-2));
+                sap.setProperty("Rate", new Variant(-5));
                 Variant defalutVoice = sap.getProperty("Voice");
                 Dispatch dispdefaultVoice = defalutVoice.toDispatch();
                 Variant allVoices = Dispatch.call(sapo, "GetVoices");
@@ -98,14 +98,14 @@ public class Voice {
 
         Long start = System.currentTimeMillis();
 
-        strat("朗读开始", type);
+        strat("speech start", type);
         System.err.println("朗读开始！");
         // i+1 express number row
         for (int i = 0; i < list.size(); i++) {
             speech(list.get(i), i + 1);
         }
 
-        strat("朗读完毕", 0);
+        strat("voice over", 0);
         System.err.println("朗读完毕~");
         Long end = System.currentTimeMillis();
         Long now = end - start;
@@ -119,26 +119,30 @@ public class Voice {
     public static void speech(Word word, Integer number) {
         StringBuilder speechWord = new StringBuilder("");
         speechWord.append(word.getEnglishWord());
-        // 减缓语速的作用
-        speechWord.append("（）（）（）（）（）（）（）");
+        // 减缓单词和单词之间的语速的作用
+        speechWord.append("（）（）（）（）（）（）（）（）-----（）（）");
         speechWord.append(word.getEnglishWord());
-        speechWord.append("（）（）（）（）（）（）（）");
+         speechWord.append("（）（）（）（）（）（）（）（）（）-------（）");
         speechWord.append(word.getEnglishWord());
-        speechWord.append("（）（）（）（）（）（）（）");
+         speechWord.append("（）（）（）（）（）（）（）（）（）（）");
+        speechWord.append(word.getEnglishWord());
+        speechWord.append("（）（）（）（）（）（）（）（）（）（）");
+        speechWord.append(word.getEnglishWord());
+        speechWord.append("（）（）（）（）（）（）（）（）（）（）");
         // 如果别名等于null，则将别名设置为空
         if (word.getAlias() == null) {
             word.setAlias("");
         }
         // 添加alias，为null的设置为空，不为null，则照常添加
-        speechWord.append(word.getAlias());
-        speechWord.append("    ");
+//        speechWord.append(word.getAlias());
+//        speechWord.append("    ");
         // 如果meaning等于null，则将meaning设置为空
         if (word.getMeaning() == null) {
             word.setMeaning("");
         }
         // 添加别名，为null的设置为空，不为null，则照常添加
-        speechWord.append(word.getMeaning());
-        speechWord.append("  ");
+//        speechWord.append(word.getMeaning());
+//        speechWord.append("  ");
 
        /*
        // 读单词 有点费时间还是取消了
@@ -155,7 +159,7 @@ public class Voice {
         speechWord.append("（）（）（）");
 
         // invoke 朗读方法
-        strat(speechWord.toString(), 0);
+        strat(speechWord.toString(), 1);
 
         // clear speech word re-add word
         speechWord.delete(0, speechWord.length());
