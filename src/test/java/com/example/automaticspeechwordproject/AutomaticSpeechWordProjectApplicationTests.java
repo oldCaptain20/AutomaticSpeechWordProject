@@ -22,7 +22,13 @@ class AutomaticSpeechWordProjectApplicationTests {
     @Test
     // 复习最近添加的1000个单词
     void contextLoads1000() {
-         voice.master(1,1000);
+         voice.master(1,1000,-5);
+        }
+
+
+    @Test
+    void contextLoadsFest1000() {
+         voice.masterFest(1,1000,1);
         }
 
 
@@ -30,13 +36,13 @@ class AutomaticSpeechWordProjectApplicationTests {
     @Test
     // 复习最近添加的50个单词
     void contextLoads50() {
-         voice.master(1,50);
+         voice.master(1,50,-5);
         }
 
    @Test
     // 复习最近添加的50个单词
     void contextLoads100() {
-         voice.master(1,100);
+         voice.master(1,100,-5);
         }
 
 
@@ -45,7 +51,7 @@ class AutomaticSpeechWordProjectApplicationTests {
     // 复习前15个单词
     void contextLoads15(){
             while(true){
-                voice.master(1,15);
+                voice.master(1,15,-5);
             }
     }
 

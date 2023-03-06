@@ -24,7 +24,7 @@ public class VoiceController {
     public void startSpeech(@RequestParam("type") Integer type){
 
         synchronized (type){
-          voice.master(type,1000);
+          voice.master(type,1000,-5);
       }
 
     }
