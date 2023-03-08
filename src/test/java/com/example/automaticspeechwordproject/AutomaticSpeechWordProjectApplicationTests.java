@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 @SpringBootTest
@@ -28,7 +31,7 @@ class AutomaticSpeechWordProjectApplicationTests {
 
     @Test
     void contextLoadsFest1000() {
-         voice.masterFest(1,1000,1);
+         voice.masterFest(1,1000,-3);
         }
 
 
@@ -51,8 +54,23 @@ class AutomaticSpeechWordProjectApplicationTests {
     // 复习前15个单词
     void contextLoads15(){
             while(true){
-                voice.master(1,15,-5);
+                voice.master(1,30,-5);
             }
+    }
+
+    /**
+     * 查询所有的单词，添加到词库中去
+     */
+    @Test
+    void contextLoadsTemp() throws FileNotFoundException {
+        // 标准输入流不需要关闭
+        FileOutputStream fos=new FileOutputStream("D:\\gz\\Secret\\word.txt");
+        PrintStream ps=new PrintStream(fos);
+        // 修改输出方向
+        System.setOut(ps);
+        wordService.list().forEach(e-> System.out.println(e.getEnglishWord()));
+
+
     }
 
 

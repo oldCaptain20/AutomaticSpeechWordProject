@@ -202,9 +202,11 @@ public class Voice {
 
     public static void speechFest(Word word, Integer number,int fast) {
         StringBuilder speechWord = new StringBuilder("");
+
+        speechWord.append("（）（）（）（）（）（）（）（）（）（）（）（）（）");
+        speechWord.append("（）（）（）（）（）（）（）（）（）（）（）（）（）");
         speechWord.append(word.getEnglishWord());
         // 减缓单词和单词之间的语速的作用
-        speechWord.append("（）（）（）（）（）（）（）（）（）（）");
 
         // 如果别名等于null，则将别名设置为空
         if (word.getAlias() == null) {
@@ -229,8 +231,8 @@ public class Voice {
         }
 */
 
+        speechWord.append("（）（）（）（）（）（）（）（）（）（）（）（）（）");
         speechWord.append(word.getEnglishWord());
-        speechWord.append("（）（）（）（）（）（）（）");
 
         System.err.println("第" + number + "个:" + word.getEnglishWord()+"  "+word.getAlias()+"  "+word.getMeaning());
         speechWord.append("（）（）（）");
